@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+}
+
+@mixin display-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$slider-size: 300px;
+$slider-margin: 10px;
+// how many slider you want to show in box slider
+@function box-slider-width($namberOfelemnts) {
+  @return ($slider-size + $slider-margin) * $namberOfelemnts;
+}
+
+.box-slider {
+  display: flex;
+  overflow: hidden;
+  margin: 0 10px;
+  .swiper-wrapper {
+    display: flex;
+    transition: all 0.5s ease-in-out;
+    .slider {
+      @include display-center;
+      width: $slider-size;
+      height: $slider-size;
+      margin-right: $slider-margin;
+      background: {
+        size: cover;
+        position: center;
+      };
+    }
+  }
+}
+
+$a: 1;
+@for $i from 1 through 11 {
+    .slider:nth-child(#{$i}) {
+      background: {
+        image: url(../imgs/#{$a}.jpg);
+      };
+    }
+    @if $a != 4 {
+      $a: $a + 1;
+    }@else {
+      $a: 1;
+    }
+}
+
+.box-slider {
+  position: relative;
+  .arrow {
+    $padding: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: {
+      left: $padding;
+      right: $padding + $slider-margin;
+    }
+    z-index: 500;
+    .next,
+    .pre {
+      $size: 30px;
+      width: $size;
+      height: $size;
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: white;
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.226);
+      &:hover {
+        background-color: rgba(250, 235, 215, 0.67);
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+  .box-slider {
+    width: box-slider-width(1);
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .box-slider {
+    width: box-slider-width(1);
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  .box-slider {
+    width: box-slider-width(2);
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+  .box-slider {
+    width: box-slider-width(3);
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .box-slider {
+    width: box-slider-width(3);
+  }
+}
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  .box-slider {
+    width: box-slider-width(4);
+  }
+}

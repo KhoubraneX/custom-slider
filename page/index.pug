@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        link(rel="stylesheet" href="../style/style.css")
+        title Slider
+    body
+    .main-slider
+        .box-slider
+            .arrow
+                .pre <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Arrow Back</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M244 400L100 256l144-144M120 256h292"/></svg>
+                .next <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><title>Arrow Forward</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M268 112l144 144-144 144M392 256H100"/></svg>
+            .swiper-wrapper
+                - for (let i=1 ; i<=11 ;i++)
+                    div.slider
+    script(src="../js/main.js")
